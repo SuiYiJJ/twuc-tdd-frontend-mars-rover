@@ -47,4 +47,20 @@ export class Rover {
                 break;
         }
     }
+
+    moveByCommand(command) {
+        for(let oneCommand in command){
+            switch (command[oneCommand]){
+                case 'M':
+                    this.moveForward();
+                    break;
+                case 'L':
+                    this.turnLeft();
+                    break;
+                case 'R':
+                    this.turnRight();
+                    break;
+            }
+        }
+    }
 }
