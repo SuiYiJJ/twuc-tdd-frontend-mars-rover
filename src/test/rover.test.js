@@ -42,4 +42,19 @@ describe("Rover", () => {
         // then
         expect(rover.getPosition()).toEqual({x: 1, y: 2, direction: final});
     })
+
+    it.each([
+        {x_initial: 1, y_initial: 2, direction: 'N', x_final: 1, y_final: 3},
+        {x_initial: 1, y_initial: 2, direction: 'E', x_final: 2, y_final: 2},
+        {x_initial: 1, y_initial: 2, direction: 'S', x_final: 1, y_final: 1},
+        {x_initial: 1, y_initial: 2, direction: 'W', x_final: 0, y_final: 2},
+    ])
+    ('should move forward when direction is $direction', ({x_initial, y_initial, direction,x_final,y_final}) => {
+        // given
+        const rover = new Rover(x_initial, y_initial, direction);
+        // when
+        rover.moveForward();
+        // then
+        expect(rover.getPosition()).toEqual({x: x_final, y: y_final, direction: direction});
+    });
 })

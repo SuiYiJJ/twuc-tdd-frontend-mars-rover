@@ -20,13 +20,31 @@ export class Rover {
     turnRight() {
         this.turnDirectionClockwise(true);
     }
-    turnDirectionClockwise(isClockWise){
+
+    turnDirectionClockwise(isClockWise) {
         const clockWise = ['N', 'E', 'S', 'W'];
         const indexOfClockWise = clockWise.indexOf(this.direction);
-        if(isClockWise){
+        if (isClockWise) {
             this.direction = this.direction === 'W' ? 'N' : clockWise[indexOfClockWise + 1];
-        }else{
+        } else {
             this.direction = this.direction === 'N' ? 'W' : clockWise[indexOfClockWise - 1];
+        }
+    }
+
+    moveForward() {
+        switch (this.direction) {
+            case 'N':
+                this.y++;
+                break;
+            case 'E':
+                this.x++;
+                break;
+            case 'W':
+                this.x--;
+                break;
+            case 'S':
+                this.y--;
+                break;
         }
     }
 }
